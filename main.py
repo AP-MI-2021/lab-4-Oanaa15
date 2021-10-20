@@ -41,17 +41,34 @@ def TestSumaPare():
     assert sumaPare([1, 3, 5, 9]) == 0
     assert sumaPare([2, 4, 12, 5]) == 18
 
+def doarPare(l):
+    '''
+    determina doar numerele din lista care sunt pare, daca un nr. se repeta va aparea o singura data
+    :param l: o lista de nr. intregi
+    :return: toate nr. din lista care sunt pare; daca un nr se repeta, va aparea o singura data
+    '''
+    rezultat =[]
+    for x in l:
+        if x % 2 == 0 and x not in rezultat:
+            rezultat.append(x)
+    return rezultat
 
+def TestDoarPare():
+    assert doarPare([23, 12, 3, 52, 12]) == [12, 52]
+    assert doarPare([23, 12, 3, 12, 12]) == [12]
+    assert doarPare([23, 1, 3, 5, 11]) == []
+    
 
 def main():
     TestGasesteNr()
     TestSumaPare()
+    TestDoarPare()
     l = []
     while True:
         print("1. Citire lista")
         print("2. Afișați dacă un număr citit de la tastatura se regaseste in lista începând de la o anumită poziție citită de la tastatură. ")
         print("3. Afișați suma tuturor numerelor întregi pare din lista.")
-        print("4. ")
+        print("4. Afișați toate numere din lista care sunt pare. Daca se repeta un numar, acesta va apărea în lista rezultat doar o singura data.")
         print("5. ")
 
         optiune = input("Dati optiunea: ")
@@ -68,7 +85,7 @@ def main():
         elif optiune == "3":
             print(sumaPare(l))
         elif optiune == "4":
-            pass
+            print(doarPare(l))
         elif optiune == "5":
             pass
         elif optiune == "a":
